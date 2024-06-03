@@ -1,0 +1,6 @@
+/home/ayush/git_files/baremetal_stm32/build/CMakeFiles/baremetal_stm32.elf.dir
+/home/ayush/git_files/baremetal_stm32/build/CMakeFiles/edit_cache.dir
+/home/ayush/git_files/baremetal_stm32/build/CMakeFiles/rebuild_cache.dir
+/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/device.dir
+/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/edit_cache.dir
+/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/rebuild_cache.dir
