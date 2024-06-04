@@ -89,12 +89,12 @@ baremetal_stm32_elf_OBJECTS = \
 
 # External object files for target baremetal_stm32.elf
 baremetal_stm32_elf_EXTERNAL_OBJECTS = \
-"/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/device.dir/startup_stm32f429.c.o" \
-"/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/device.dir/system_stm32f4xx.c.o"
+"/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/device.dir/src/startup_stm32f429.c.o" \
+"/home/ayush/git_files/baremetal_stm32/build/device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o"
 
 baremetal_stm32.elf: CMakeFiles/baremetal_stm32.elf.dir/main.c.o
-baremetal_stm32.elf: device/CMakeFiles/device.dir/startup_stm32f429.c.o
-baremetal_stm32.elf: device/CMakeFiles/device.dir/system_stm32f4xx.c.o
+baremetal_stm32.elf: device/CMakeFiles/device.dir/src/startup_stm32f429.c.o
+baremetal_stm32.elf: device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o
 baremetal_stm32.elf: CMakeFiles/baremetal_stm32.elf.dir/build.make
 baremetal_stm32.elf: CMakeFiles/baremetal_stm32.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ayush/git_files/baremetal_stm32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable baremetal_stm32.elf"

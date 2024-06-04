@@ -69,36 +69,36 @@ include device/CMakeFiles/device.dir/progress.make
 # Include the compile flags for this target's objects.
 include device/CMakeFiles/device.dir/flags.make
 
-device/CMakeFiles/device.dir/startup_stm32f429.c.o: device/CMakeFiles/device.dir/flags.make
-device/CMakeFiles/device.dir/startup_stm32f429.c.o: ../device/startup_stm32f429.c
-device/CMakeFiles/device.dir/startup_stm32f429.c.o: device/CMakeFiles/device.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ayush/git_files/baremetal_stm32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object device/CMakeFiles/device.dir/startup_stm32f429.c.o"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT device/CMakeFiles/device.dir/startup_stm32f429.c.o -MF CMakeFiles/device.dir/startup_stm32f429.c.o.d -o CMakeFiles/device.dir/startup_stm32f429.c.o -c /home/ayush/git_files/baremetal_stm32/device/startup_stm32f429.c
+device/CMakeFiles/device.dir/src/startup_stm32f429.c.o: device/CMakeFiles/device.dir/flags.make
+device/CMakeFiles/device.dir/src/startup_stm32f429.c.o: ../device/src/startup_stm32f429.c
+device/CMakeFiles/device.dir/src/startup_stm32f429.c.o: device/CMakeFiles/device.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ayush/git_files/baremetal_stm32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object device/CMakeFiles/device.dir/src/startup_stm32f429.c.o"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT device/CMakeFiles/device.dir/src/startup_stm32f429.c.o -MF CMakeFiles/device.dir/src/startup_stm32f429.c.o.d -o CMakeFiles/device.dir/src/startup_stm32f429.c.o -c /home/ayush/git_files/baremetal_stm32/device/src/startup_stm32f429.c
 
-device/CMakeFiles/device.dir/startup_stm32f429.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/device.dir/startup_stm32f429.c.i"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ayush/git_files/baremetal_stm32/device/startup_stm32f429.c > CMakeFiles/device.dir/startup_stm32f429.c.i
+device/CMakeFiles/device.dir/src/startup_stm32f429.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/device.dir/src/startup_stm32f429.c.i"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ayush/git_files/baremetal_stm32/device/src/startup_stm32f429.c > CMakeFiles/device.dir/src/startup_stm32f429.c.i
 
-device/CMakeFiles/device.dir/startup_stm32f429.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/device.dir/startup_stm32f429.c.s"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ayush/git_files/baremetal_stm32/device/startup_stm32f429.c -o CMakeFiles/device.dir/startup_stm32f429.c.s
+device/CMakeFiles/device.dir/src/startup_stm32f429.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/device.dir/src/startup_stm32f429.c.s"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ayush/git_files/baremetal_stm32/device/src/startup_stm32f429.c -o CMakeFiles/device.dir/src/startup_stm32f429.c.s
 
-device/CMakeFiles/device.dir/system_stm32f4xx.c.o: device/CMakeFiles/device.dir/flags.make
-device/CMakeFiles/device.dir/system_stm32f4xx.c.o: ../device/system_stm32f4xx.c
-device/CMakeFiles/device.dir/system_stm32f4xx.c.o: device/CMakeFiles/device.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ayush/git_files/baremetal_stm32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object device/CMakeFiles/device.dir/system_stm32f4xx.c.o"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT device/CMakeFiles/device.dir/system_stm32f4xx.c.o -MF CMakeFiles/device.dir/system_stm32f4xx.c.o.d -o CMakeFiles/device.dir/system_stm32f4xx.c.o -c /home/ayush/git_files/baremetal_stm32/device/system_stm32f4xx.c
+device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o: device/CMakeFiles/device.dir/flags.make
+device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o: ../device/src/system_stm32f4xx.c
+device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o: device/CMakeFiles/device.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ayush/git_files/baremetal_stm32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o -MF CMakeFiles/device.dir/src/system_stm32f4xx.c.o.d -o CMakeFiles/device.dir/src/system_stm32f4xx.c.o -c /home/ayush/git_files/baremetal_stm32/device/src/system_stm32f4xx.c
 
-device/CMakeFiles/device.dir/system_stm32f4xx.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/device.dir/system_stm32f4xx.c.i"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ayush/git_files/baremetal_stm32/device/system_stm32f4xx.c > CMakeFiles/device.dir/system_stm32f4xx.c.i
+device/CMakeFiles/device.dir/src/system_stm32f4xx.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/device.dir/src/system_stm32f4xx.c.i"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ayush/git_files/baremetal_stm32/device/src/system_stm32f4xx.c > CMakeFiles/device.dir/src/system_stm32f4xx.c.i
 
-device/CMakeFiles/device.dir/system_stm32f4xx.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/device.dir/system_stm32f4xx.c.s"
-	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ayush/git_files/baremetal_stm32/device/system_stm32f4xx.c -o CMakeFiles/device.dir/system_stm32f4xx.c.s
+device/CMakeFiles/device.dir/src/system_stm32f4xx.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/device.dir/src/system_stm32f4xx.c.s"
+	cd /home/ayush/git_files/baremetal_stm32/build/device && arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ayush/git_files/baremetal_stm32/device/src/system_stm32f4xx.c -o CMakeFiles/device.dir/src/system_stm32f4xx.c.s
 
-device: device/CMakeFiles/device.dir/startup_stm32f429.c.o
-device: device/CMakeFiles/device.dir/system_stm32f4xx.c.o
+device: device/CMakeFiles/device.dir/src/startup_stm32f429.c.o
+device: device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o
 device: device/CMakeFiles/device.dir/build.make
 .PHONY : device
 

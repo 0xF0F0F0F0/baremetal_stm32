@@ -130,53 +130,53 @@ device/fast:
 	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/build
 .PHONY : device/fast
 
-startup_stm32f429.o: startup_stm32f429.c.o
-.PHONY : startup_stm32f429.o
+src/startup_stm32f429.o: src/startup_stm32f429.c.o
+.PHONY : src/startup_stm32f429.o
 
 # target to build an object file
-startup_stm32f429.c.o:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/startup_stm32f429.c.o
-.PHONY : startup_stm32f429.c.o
+src/startup_stm32f429.c.o:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/startup_stm32f429.c.o
+.PHONY : src/startup_stm32f429.c.o
 
-startup_stm32f429.i: startup_stm32f429.c.i
-.PHONY : startup_stm32f429.i
+src/startup_stm32f429.i: src/startup_stm32f429.c.i
+.PHONY : src/startup_stm32f429.i
 
 # target to preprocess a source file
-startup_stm32f429.c.i:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/startup_stm32f429.c.i
-.PHONY : startup_stm32f429.c.i
+src/startup_stm32f429.c.i:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/startup_stm32f429.c.i
+.PHONY : src/startup_stm32f429.c.i
 
-startup_stm32f429.s: startup_stm32f429.c.s
-.PHONY : startup_stm32f429.s
+src/startup_stm32f429.s: src/startup_stm32f429.c.s
+.PHONY : src/startup_stm32f429.s
 
 # target to generate assembly for a file
-startup_stm32f429.c.s:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/startup_stm32f429.c.s
-.PHONY : startup_stm32f429.c.s
+src/startup_stm32f429.c.s:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/startup_stm32f429.c.s
+.PHONY : src/startup_stm32f429.c.s
 
-system_stm32f4xx.o: system_stm32f4xx.c.o
-.PHONY : system_stm32f4xx.o
+src/system_stm32f4xx.o: src/system_stm32f4xx.c.o
+.PHONY : src/system_stm32f4xx.o
 
 # target to build an object file
-system_stm32f4xx.c.o:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/system_stm32f4xx.c.o
-.PHONY : system_stm32f4xx.c.o
+src/system_stm32f4xx.c.o:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o
+.PHONY : src/system_stm32f4xx.c.o
 
-system_stm32f4xx.i: system_stm32f4xx.c.i
-.PHONY : system_stm32f4xx.i
+src/system_stm32f4xx.i: src/system_stm32f4xx.c.i
+.PHONY : src/system_stm32f4xx.i
 
 # target to preprocess a source file
-system_stm32f4xx.c.i:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/system_stm32f4xx.c.i
-.PHONY : system_stm32f4xx.c.i
+src/system_stm32f4xx.c.i:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/system_stm32f4xx.c.i
+.PHONY : src/system_stm32f4xx.c.i
 
-system_stm32f4xx.s: system_stm32f4xx.c.s
-.PHONY : system_stm32f4xx.s
+src/system_stm32f4xx.s: src/system_stm32f4xx.c.s
+.PHONY : src/system_stm32f4xx.s
 
 # target to generate assembly for a file
-system_stm32f4xx.c.s:
-	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/system_stm32f4xx.c.s
-.PHONY : system_stm32f4xx.c.s
+src/system_stm32f4xx.c.s:
+	cd /home/ayush/git_files/baremetal_stm32/build && $(MAKE) $(MAKESILENT) -f device/CMakeFiles/device.dir/build.make device/CMakeFiles/device.dir/src/system_stm32f4xx.c.s
+.PHONY : src/system_stm32f4xx.c.s
 
 # Help Target
 help:
@@ -187,12 +187,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... device"
-	@echo "... startup_stm32f429.o"
-	@echo "... startup_stm32f429.i"
-	@echo "... startup_stm32f429.s"
-	@echo "... system_stm32f4xx.o"
-	@echo "... system_stm32f4xx.i"
-	@echo "... system_stm32f4xx.s"
+	@echo "... src/startup_stm32f429.o"
+	@echo "... src/startup_stm32f429.i"
+	@echo "... src/startup_stm32f429.s"
+	@echo "... src/system_stm32f4xx.o"
+	@echo "... src/system_stm32f4xx.i"
+	@echo "... src/system_stm32f4xx.s"
 .PHONY : help
 
 

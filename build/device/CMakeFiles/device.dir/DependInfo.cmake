@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ayush/git_files/baremetal_stm32/device/startup_stm32f429.c" "device/CMakeFiles/device.dir/startup_stm32f429.c.o" "gcc" "device/CMakeFiles/device.dir/startup_stm32f429.c.o.d"
-  "/home/ayush/git_files/baremetal_stm32/device/system_stm32f4xx.c" "device/CMakeFiles/device.dir/system_stm32f4xx.c.o" "gcc" "device/CMakeFiles/device.dir/system_stm32f4xx.c.o.d"
+  "/home/ayush/git_files/baremetal_stm32/device/src/startup_stm32f429.c" "device/CMakeFiles/device.dir/src/startup_stm32f429.c.o" "gcc" "device/CMakeFiles/device.dir/src/startup_stm32f429.c.o.d"
+  "/home/ayush/git_files/baremetal_stm32/device/src/system_stm32f4xx.c" "device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o" "gcc" "device/CMakeFiles/device.dir/src/system_stm32f4xx.c.o.d"
   )
 
 # Targets to which this target links.
