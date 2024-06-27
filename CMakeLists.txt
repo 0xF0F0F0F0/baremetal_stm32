@@ -47,8 +47,10 @@ set(CMAKE_C_FLAGS  "-mcpu=${MCU_ARCH}   \
 set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
 
 add_subdirectory(device)
+add_subdirectory(modules)
+add_subdirectory(drivers)
 add_executable(${PROJECT_NAME}.elf ${SOURCES})
-target_link_libraries(${PROJECT_NAME}.elf PRIVATE device)
+target_link_libraries(${PROJECT_NAME}.elf PRIVATE device PRIVATE modules)
 
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${PROJECT_NAME}.elf> ${CMAKE_CURRENT_SOURCE_DIR}/bin/${PROJECT_NAME}.bin

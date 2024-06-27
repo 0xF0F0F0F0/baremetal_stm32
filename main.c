@@ -1,5 +1,14 @@
 #include "main.h"
 #include "stm32f4xx.h"
+#include "errors.h"
+#include "serial.h"
+
+
+void setup()
+{
+    
+
+}
 
 int main(void)
 {  
@@ -8,21 +17,15 @@ int main(void)
     //GPIOG->OTYPER &= ~(GPIO_OTYPER_OT_13);
     //GPIOG->PUPDR &= ~(GPIO_PUPDR_PUPDR13_0);
 
+    setup();
+
     while(1)
     {   
-        int32_t delay = 0;
-
-        GPIOG->BSRR &= ~(GPIO_BSRR_BS_13);
-        GPIOG->BSRR |= GPIO_BSRR_BR_13;
+        GPIOG->ODR ^= GPIO_ODR_ODR_13;        
         
-        for(delay = 0; delay < 3600000; delay++)
+        for(uint32_t delay = 0; delay < 3600000; delay++)
             __asm__("nop");
-
-        GPIOG->BSRR |= GPIO_BSRR_BS_13;
-        GPIOG->BSRR &= ~(GPIO_BSRR_BR_13);
         
-        for(delay = 0; delay < 3600000; delay++)
-            __asm__("nop");
     }
 
 }
