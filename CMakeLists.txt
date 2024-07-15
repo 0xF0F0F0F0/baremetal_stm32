@@ -42,7 +42,8 @@ set(CMAKE_C_FLAGS  "-mcpu=${MCU_ARCH}   \
                     -mfloat-abi=hard    \
                     -mfpu=fpv4-sp-d16   \
                     --specs=nosys.specs \
-                    -O3")
+                    -O3 \
+                    -g3")
 
 set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
 
