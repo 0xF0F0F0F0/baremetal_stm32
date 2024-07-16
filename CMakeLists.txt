@@ -49,7 +49,6 @@ set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
 
 add_subdirectory(device)
 add_subdirectory(modules)
-add_subdirectory(drivers)
 add_executable(${PROJECT_NAME}.elf ${SOURCES})
 target_link_libraries(${PROJECT_NAME}.elf PRIVATE device PRIVATE modules)
 

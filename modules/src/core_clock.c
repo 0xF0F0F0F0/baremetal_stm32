@@ -6,11 +6,11 @@
  * APB2 - 90 MHz
  * APB1 - 45 MHz
  *
- * --- HSE [8] -> /PLLM (in div.) [4] -> xPLLN (PLL mult.) [180] -> /PLLP (out div.) [2]
- * --- (8 / 4) * 180 / 2 = 180 MHz         
+ * --- HSE [8] -> /PLLM (in div.) [8] -> xPLLN (PLL mult.) [360] -> /PLLP (out div.) [2]
+ * --- (8 / 8) * 360 / 2 = 180 MHz         
  * 
  * To achieve 180 MHz system clock with an 8MHz HSE oscillator,
- * PLLM divider should reduce HSE to 2MHz (recommended for low PLL jitter),
+ * PLLM divider should reduce HSE to 2MHz (low PLL jitter) but for now we reduce to 1MHz,
  * followed by setting PLLN between 50 and 432 such that VCO output frequency
  * is between 100 and 432 MHz. 
  * Note: With a 180 MHz PLL clock, we can't generate the 48MHz for USB OTG FS
@@ -23,6 +23,8 @@
 uint32_t core_clock_speed;
 
 err_t core_clock_init() {
+
+    err_t error = ERR1;
 
     // Set HSE (high speed external crystal @ 8MHz) as PLL source
     RCC->PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSE;
@@ -69,53 +71,6 @@ err_t core_clock_init() {
 
     RCC->CR &= ~(RCC_CR_HSION); // Turn off HSI oscillator
 
-    // Set Global
-    core_clock_speed = 180000000;    
+    error = EOK;
+    return error;
 }
-/*
-err_t core_clock_init() {
-
-    // Set HSE (high speed external crystal @ 8MHz) as PLL source
-    RCC->PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSE;
-    
-    // Set PLLM to 8
-    RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLM); // Clear bits 0-5
-    RCC->PLLCFGR |= RCC_PLLCFGR_PLLM_3; //
-
-    // Set PLLN to 360
-    RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLN); // Clear bits 6-14
-    RCC->PLLCFGR |= (RCC_PLLCFGR_PLLN_3 | RCC_PLLCFGR_PLLN_5 | 
-                     RCC_PLLCFGR_PLLN_6 | RCC_PLLCFGR_PLLN_8);
-
-    // Set PLLP to 2
-    RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLP); // Clear bits 16-17
-
-    // Set PLLQ to 8 (results in 45 MHz, but need 48MHz for USB FS.)
-    RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLQ); // Clear bits 16-17
-    RCC->PLLCFGR |= RCC_PLLCFGR_PLLQ_3;
-
-//    PWR->CR |= PWR_CR_ODEN;                   // enable overdrive
-//    while(!(PWR->CSR & PWR_CSR_ODRDY)) {};    // wait till overdrive is ready
-//    PWR->CR |= PWR_CR_ODSWEN;                 // switch to overdrive mode
-//    while(!(PWR->CSR & PWR_CSR_ODSWRDY)) {};  // wait till switch
-
-    // Set 5 wait states and enable prefetch buffer
-    FLASH->ACR |= FLASH_ACR_PRFTEN;
-    FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
-
-    // Set AHB and APB prescalers
-    RCC->CFGR |= RCC_CFGR_PPRE1_DIV4; // APB1 low speed
-    RCC->CFGR |= RCC_CFGR_PPRE2_DIV2; // APB2 high speed
-    //AHB prescaler = 0 default
-
-    RCC->CR |= RCC_CR_HSEON;                //enable HSE
-    while(!(RCC->CR & RCC_CR_HSERDY)) {};   //wait till HSE is ready
-    
-    RCC->CR |= RCC_CR_PLLON;                // enable PLL
-    while(!(RCC->CR & RCC_CR_PLLRDY)) {};   // wait till PLL is ready
-
-    RCC->CFGR |= RCC_CFGR_SW_PLL; // Set PLL as sysclock source
-
-    // Set Global
-    core_clock_speed = 180000000;    
-}*/

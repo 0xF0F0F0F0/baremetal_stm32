@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stm32f4xx.h": "c",
-        "stm32f4xx_usart.h": "c"
+        "stm32f4xx_usart.h": "c",
+        "main.h": "c",
+        "timer_util.h": "c"
     }
 }
