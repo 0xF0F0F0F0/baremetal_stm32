@@ -7,11 +7,12 @@
  * APB1 - 45 MHz
  *
  * --- HSE [8] -> /PLLM (in div.) [8] -> xPLLN (PLL mult.) [360] -> /PLLP (out div.) [2]
- * --- (8 / 8) * 360 / 2 = 180 MHz         
+ * --- (8 MHz / 8) * 360 / 2 = 180 MHz         
  * 
  * To achieve 180 MHz system clock with an 8MHz HSE oscillator,
  * PLLM divider should reduce HSE to 2MHz (low PLL jitter) but for now we reduce to 1MHz,
- * followed by setting PLLN between 50 and 432 such that VCO output frequency
+ * (ST says PLLM should be equal to crystal frequency).
+ * Followed by setting PLLN between 50 and 432 such that VCO output frequency
  * is between 100 and 432 MHz. 
  * Note: With a 180 MHz PLL clock, we can't generate the 48MHz for USB OTG FS
  *       this can be done with a 168 MHz sysclock if required.
@@ -60,12 +61,12 @@ err_t core_clock_init() {
     // Set AHB and APB prescalers
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4; // APB1 low speed
     RCC->CFGR |= RCC_CFGR_PPRE2_DIV2; // APB2 high speed
-    //AHB prescaler = 0 default
+    // AHB prescaler = 0 default
     
-    RCC->CR |= RCC_CR_HSEON;                //enable HSE
-    while(!(RCC->CR & RCC_CR_HSERDY)) {};   //wait till HSE is ready
+    RCC->CR |= RCC_CR_HSEON;                // Enable HSE
+    while(!(RCC->CR & RCC_CR_HSERDY)) {};   // Wait till HSE is ready
     
-    while(!(RCC->CR & RCC_CR_PLLRDY)) {};   // wait till PLL is ready
+    while(!(RCC->CR & RCC_CR_PLLRDY)) {};   // Wait till PLL is ready
 
     RCC->CFGR |= RCC_CFGR_SW_PLL; // Set PLL as sysclock source
 
