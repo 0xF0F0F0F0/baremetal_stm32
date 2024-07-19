@@ -20,9 +20,11 @@ set(MCU_PART "STM32F429_439xx")
 # CMSIS directory
 set(CMSIS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMSIS/Core/Include")
 
+# STM32xx.h directory
+set(DEVICE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/device/inc")
+
 # Linker directory
 set(LINKER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/device/gcc_arm.ld")
-
 
 # Sources
 set(SOURCES 
