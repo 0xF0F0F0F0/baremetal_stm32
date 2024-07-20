@@ -4,12 +4,16 @@
 #include "core_clock.h"
 #include "timer_util.h"
 #include "i2c.h"
+#include "wm8731.h"
+#include "i2s.h"
 
 int main(void)
 {
 	core_clock_init();
 	systick_init();
 	serial_init(BAUD_115200);
+
+	i2s_init(SPI3);
 
 	volatile err_t i2c_error;
 	i2c_peripheral_t i2c2 = {I2C2, true};
@@ -28,10 +32,14 @@ int main(void)
 	};
 	uint32_t num_cmd = sizeof(cmd_list) / sizeof(uint8_t);
 
-	i2c_error = i2c_send(&i2c2, 0x1A, cmd_list, num_cmd);
+	i2c_error = wm8731_init(&i2c2, 0x1A, cmd_list, num_cmd);
 
 	while (1) {
 
+		while (!(SPI3->SR & SPI_SR_TXE));
+		SPI3->DR = 0x0000; // upper half
+		while (!(SPI3->SR & SPI_SR_TXE));
+		SPI3->DR = 0xDEAD; // lower half
 	}
 }
 
