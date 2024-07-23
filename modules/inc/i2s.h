@@ -5,8 +5,7 @@
 #include "errors.h"
 #include "core_clock.h"
 
-
-err_t i2s_init(SPI_TypeDef* i2s_peripheral);
+err_t i2s_init(SPI_TypeDef* i2s_peripheral, uint16_t* tx_buffer_A, uint16_t* tx_buffer_B, uint16_t* rx_buffer_A, uint16_t* rx_buffer_B);
 
 #endif // INC_I2S_H
 

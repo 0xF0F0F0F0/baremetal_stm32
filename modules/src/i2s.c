@@ -9,7 +9,54 @@
  * SD_ext - (SI on board, ADC data) - PB4 - altfunc 7
  */
 
-err_t i2s_init(SPI_TypeDef* i2s_peripheral)
+
+
+static void dma_init(uint16_t* tx_buffer_A, uint16_t* tx_buffer_B, uint16_t* rx_buffer_A, uint16_t* rx_buffer_B)
+{
+	RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
+
+
+	// ------------------------ I2S3ext_RX -> DMA1 Stream 2 Channel 2 ---------------------------//
+	DMA1_Stream2->CR &= ~(DMA_SxCR_EN);		// disable stream
+	while(DMA1_Stream2->CR & DMA_SxCR_EN);		// wait and ensure stream is disabled
+	DMA1_Stream2->PAR = (uint32_t)&I2S3ext->DR;	// base address of I2S3ext->DR
+	DMA1_Stream2->M0AR = *(uint32_t*)&rx_buffer_A;	// first buffer address
+	DMA1_Stream2->M1AR = *(uint32_t*)&rx_buffer_B;	// second buffer address
+	DMA1_Stream2->NDTR = 4;				// number of transfers per request
+	DMA1_Stream2->CR |= DMA_SxCR_CHSEL_1;		// channel 2
+	DMA1_Stream2->CR |= DMA_SxCR_DBM;		// double buffer mode
+	DMA1_Stream2->CR |= DMA_SxCR_PL_1;		// high priority
+	DMA1_Stream2->CR |= DMA_SxCR_MSIZE_0;		// memory data size: half-word (16-bit)
+	DMA1_Stream2->CR |= DMA_SxCR_PSIZE_0;		// peripheral data size: half-word (16-bit)
+	DMA1_Stream2->CR |= DMA_SxCR_MINC;		// memory address incremented
+	// direction: peripheral -> memory (default)
+	DMA1_Stream2->CR |= DMA_SxCR_TCIE;		// transfer complete interrupt enable
+	NVIC_EnableIRQ(DMA1_Stream2_IRQn);		// enable DMA1 stream 2 global interrupt
+
+
+	// ------------------------ SPI3_TX -> DMA1 Stream 5 Channel 0 -----------------------------//
+	DMA1_Stream5->CR &= ~(DMA_SxCR_EN);		// disable stream
+	while(DMA1_Stream5->CR & DMA_SxCR_EN);		// wait and ensure stream is disabled
+	DMA1_Stream5->PAR = (uint32_t)&SPI3->DR;	// base address of SPI3->DR
+	DMA1_Stream5->M0AR = *(uint32_t*)&tx_buffer_A;	// first buffer address
+	DMA1_Stream5->M1AR = *(uint32_t*)&tx_buffer_B;	// second buffer address
+	DMA1_Stream5->NDTR = 4;				// number of transfers per request
+	// channel 0 (default)
+	DMA1_Stream5->CR |= DMA_SxCR_DBM;		// double buffer mode
+	DMA1_Stream5->CR |= DMA_SxCR_PL_1;		// high priority
+	DMA1_Stream5->CR |= DMA_SxCR_MSIZE_0;		// memory data size: half-word (16-bit)
+	DMA1_Stream5->CR |= DMA_SxCR_PSIZE_0;		// peripheral data size: half-word (16-bit)
+	DMA1_Stream5->CR |= DMA_SxCR_MINC;		// memory address incremented
+	DMA1_Stream5->CR |= DMA_SxCR_DIR_0;		// direction: memory -> peripheral
+	DMA1_Stream5->CR |= DMA_SxCR_TCIE;		// transfer complete interrupt enable
+	NVIC_EnableIRQ(DMA1_Stream5_IRQn);		// enable DMA1 stream 5 global interrupt
+
+	DMA1_Stream2->CR |= DMA_SxCR_EN;		// enable stream 2 (RX)
+	DMA1_Stream5->CR |= DMA_SxCR_EN;		// enable stream 5 (TX)
+
+}
+
+err_t i2s_init(SPI_TypeDef* i2s_peripheral, uint16_t* tx_buffer_A, uint16_t* tx_buffer_B, uint16_t* rx_buffer_A, uint16_t* rx_buffer_B)
 {
 	if (SPI3 == i2s_peripheral) {
 		// Enable clocks
@@ -36,13 +83,22 @@ err_t i2s_init(SPI_TypeDef* i2s_peripheral)
 	i2s_peripheral->I2SCFGR |= SPI_I2SCFGR_I2SMOD;
 	// I2SCFGR on reset: slave tx, i2s philips std. No need to set.
 
+	I2S3ext->I2SCFGR |= SPI_I2SCFGR_I2SMOD;		// enable i2s mode
+	I2S3ext->I2SCFGR |= SPI_I2SCFGR_I2SCFG_0;	// slave receiver
+	I2S3ext->I2SCFGR |= SPI_I2SCFGR_DATLEN_0;	// 24-bit
+
+
+
 	// Set data length to 24bit
 	i2s_peripheral->I2SCFGR |= SPI_I2SCFGR_DATLEN_0;
 	// Channel length automatically set to 32bit if data len > 16bit. No need to set.
 
+	dma_init(tx_buffer_A, tx_buffer_B, rx_buffer_A, rx_buffer_B);
+
+	// Enable DMA requests
+	i2s_peripheral->CR2 |= SPI_CR2_TXDMAEN;
+	I2S3ext->CR2 |= SPI_CR2_RXDMAEN;
 
 	i2s_peripheral->I2SCFGR |= SPI_I2SCFGR_I2SE;
-
-	while (!(SPI3->SR & SPI_SR_TXE));
-	i2s_peripheral->DR = 0xDEAD;
+	I2S3ext->I2SCFGR |= SPI_I2SCFGR_I2SE;
 }
